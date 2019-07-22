@@ -31,10 +31,10 @@ class ProblemOne extends Controller {
 
     foreach ( $input as $key => $item ) {
 
-      $targets = array_filter( $input, function ( $innerItem ) use ( $item ) {
+      $targets = array_filter( $input, function ( $innerKey ) use ( $key) {
 
-        return $innerItem !== $item;
-      } );
+        return $innerKey !== $key;
+      } ,ARRAY_FILTER_USE_KEY);
 
       array_push( $output, array_product( $targets ) );
 
