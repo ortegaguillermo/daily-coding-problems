@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get( '/', 'HomeController' )->name( 'home' );
+
+Route::get( '/Problems/one', 'Problems\ProblemOne' )->name( 'problemOne' );
+//Route::get('/Problems/two', 'ProblemTwo')->name('problemTwo');
