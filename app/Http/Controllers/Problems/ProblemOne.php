@@ -29,6 +29,17 @@ class ProblemOne extends Controller {
 
     $output = [];
 
+    foreach ( $input as $key => $item ) {
+
+      $targets = array_filter( $input, function ( $innerItem ) use ( $item ) {
+
+        return $innerItem !== $item;
+      } );
+
+      array_push( $output, array_product( $targets ) );
+
+    }
+
     return $output;
   }
 }
