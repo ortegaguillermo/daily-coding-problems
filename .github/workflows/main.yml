@@ -19,6 +19,8 @@ jobs:
     - name: Install Composer
       run: |
         composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
+        cp .env.example .env
+        php artisan key:generate;
 
     - name: Unit Tests
       run: |
