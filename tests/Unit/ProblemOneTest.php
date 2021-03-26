@@ -5,7 +5,7 @@ use Tests\TestCase;
 
 class ProblemOneTest extends TestCase {
   
-  public function dataSource(){
+  public function dataProviderFunction(){
     
     $input1 = [1, 2, 3, 4, 5];
     $expectedOutput1 = [ 120, 60, 40, 30, 24 ];
@@ -21,9 +21,11 @@ class ProblemOneTest extends TestCase {
       'test-case-2'=>[ $input2, $expectedOutput2 ],
       'test-case-3'=>[ $input3, $expectedOutput3 ],
     ];
+    
   }
 
   /**
+  * @dataProvider dataProviderFunction
   * @param array $input
   * @param array $expectedOutput
   */
