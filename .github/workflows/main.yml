@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-20.04
 
     container:
-      image: ortegaguillermo/php:7.2
+      image: ortegaguillermo/apache-php:7.2
       options: --cpus 1
       ports:
         - 3364
