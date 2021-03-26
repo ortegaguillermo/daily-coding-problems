@@ -14,6 +14,12 @@ Despues de llevar el repositorio a su ubicación final, asegurar existencia y pe
 composer install;
 ```
 
+# Asegurar existencia de archivo ./.env
+
+```bash
+cp .env.example .env
+```
+
 # Inmediatamente se debe hacer es actualizar las claves de cifrado de laravel y de jwt
 
 ```bash
