@@ -1,0 +1,52 @@
+version: '2'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    extra_hosts:
+      - "practicewebsite.local.com:127.0.0.1"
+    expose:
+      - "9000"
+      - "3315"
+    ports:
+      - "6464:80"
+    networks:
+      practicewebsite_net:
+        ipv4_address: 64.64.64.09
+    volumes:
+      - ./:/var/www/html
+      - ./apache_vhost:/etc/apache2/sites-available/
+    environment:
+      PHP_XDEBUG_ENABLED: 1
+      XDEBUG_CONFIG: remote_host=64.64.64.1
+      PHP_IDE_CONFIG: "serverName=Backend"
+    links:
+      - mysql
+    container_name: practicewebsite_web
+  mysql:
+    image: mysql:5.7
+    networks:
+      practicewebsite_net:
+        ipv4_address: 64.64.64.10
+    ports:
+      - 3364:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=practicewebsite_db
+    container_name: practicewebsite_db
+
+networks:
+  practicewebsite_net:
+    driver: bridge
+    driver_opts:
+      com.docker.network.enable_ipv6: "true"
+      com.docker.network.default.forwarding: 1
+      com.docker.network.all.forwarding: 1
+    ipam:
+      driver: default
+      config:
+        - subnet: 64.64.64.0/24
+          gateway: 64.64.64.1
+        - subnet: 2001:db8:23:19::1/64
+          gateway: 2001:db8:23:19::1
