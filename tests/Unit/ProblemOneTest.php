@@ -29,9 +29,9 @@ class ProblemOneTest extends TestCase {
   * @param array $input
   * @param array $expectedOutput
   */
-  public function testGet(array $input, array $expectedOuptut) {
+  public function testGet(array $input, array $expectedOutput) {
 
-    $ouptut = ProblemOne::get( $input );
+    $output = ProblemOne::get( $input );
     
     $this->assertSame(
       $expectedOutput, 
